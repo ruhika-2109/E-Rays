@@ -18,25 +18,10 @@ The project integrates Responsible AI (RAI) features to ensure fairness, explain
 
 ## 👩‍💻 Developers
 - Ruhika Kolla  
-- [Your teammate(s), if any]
+- Ganavi Purushothama
+- Arun Hariharan
 
 ---
 
-**Add .gitignore:**  
-✅ Choose → **Python**
 
----
-
-### ✅ **Final Settings Summary**
-- Repository Name: **E-Rays**  
-- Description: *AI-powered medical image analysis system for Pneumonia and Fracture detection using Responsible AI (RAI)*  
-- Visibility: **Public**  
-- Add README: **ON**  
-- Add .gitignore: **Python**  
-
-Then click **“Create repository”** 🎉  
-
----
-
-Would you like me to give you the **exact README.md file** content (formatted perfectly with emojis, sections, and project details for GitHub)? It’ll make your repo look super professional for judges.
 
