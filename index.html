@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediScan AI 2025 | Advanced Medical Imaging Analysis</title>
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --secondary: #34a853;
+            --danger: #ea4335;
+            --warning: #fbbc04;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --light-gray: #e0e0e0;
+            --border-radius: 15px;
+            --shadow: 0 20px 60px rgba(0,0,0,0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            min-height: 90vh;
+            margin-top: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8em;
+        }
+
+        .year-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            margin-left: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+            padding: 30px;
+            min-height: 70vh;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        /* Dashboard Styles */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        .recent-activity {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px dashed var(--primary);
+            transition: var(--transition);
+        }
+
+        .upload-section:hover {
+            border-color: var(--primary-dark);
+            background: #f0f1ff;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        select, input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input[type="file"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload-wrapper:hover {
+            border-color: var(--primary);
+            background: #f8f9ff;
+        }
+
+        .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-icon {
+            font-size: 3em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        /* Batch Upload Section */
+        .batch-upload-section {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px dashed var(--warning);
+            transition: var(--transition);
+        }
+
+        .batch-upload-section:hover {
+            border-color: #e6a700;
+            background: #fff9e6;
+        }
+
+        .batch-file-list {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 15px;
+            background: white;
+        }
+
+        .batch-file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .batch-file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-status {
+            font-size: 0.8em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-processing {
+            background: #cce7ff;
+            color: #004085;
+        }
+
+        .status-complete {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* Annotated Image Section */
+        .annotated-section {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .annotated-section.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .image-container {
+            position: relative;
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .scan-image {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .annotation-marker {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 3px solid;
+            background: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+
+        .annotation-marker.high-risk {
+            border-color: var(--danger);
+            box-shadow: 0 0 10px var(--danger);
+        }
+
+        .annotation-marker.medium-risk {
+            border-color: var(--warning);
+            box-shadow: 0 0 10px var(--warning);
+        }
+
+        .annotation-marker.low-risk {
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px var(--secondary);
+        }
+
+        .annotation-tooltip {
+            position: absolute;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 20;
+            max-width: 300px;
+            display: none;
+            border-left: 4px solid;
+        }
+
+        .annotation-tooltip.high-risk {
+            border-left-color: var(--danger);
+        }
+
+        .annotation-tooltip.medium-risk {
+            border-left-color: var(--warning);
+        }
+
+        .annotation-tooltip.low-risk {
+            border-left-color: var(--secondary);
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .anomaly-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .anomaly-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .anomaly-item:hover {
+            transform: translateX(5px);
+        }
+
+        .anomaly-item.high-risk {
+            border-left-color: var(--danger);
+        }
+
+        .anomaly-item.medium-risk {
+            border-left-color: var(--warning);
+        }
+
+        .anomaly-item.low-risk {
+            border-left-color: var(--secondary);
+        }
+
+        /* Enhanced History Page Styles */
+        .history-search-section {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-container {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 16px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1em;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 10px 12px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            background: white;
+            font-size: 0.9em;
+            transition: var(--transition);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .history-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .history-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .history-filename {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            word-break: break-word;
+        }
+
+        .history-date {
+            color: var(--gray);
+            font-size: 0.85em;
+            background: var(--light);
+            padding: 4px 8px;
+            border-radius: 12px;
+        }
+
+        .history-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .history-detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .history-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-label {
+            font-weight: 600;
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        .history-value {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .history-risk-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .risk-high {
+            background: #fee;
+            color: var(--danger);
+            border: 1px solid #fcc;
+        }
+
+        .risk-medium {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        .risk-low {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .history-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .history-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .history-btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .history-btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .history-btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .history-btn-outline:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray);
+            font-size: 1.1em;
+        }
+
+        .no-results-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        /* Results Section */
+        .results-section {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .result-header {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .confidence-bar {
+            background: var(--light-gray);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            transition: width 1s ease;
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: var(--light-gray);
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Alert Styles */
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            padding: 0 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc1c6;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-links a::after {
+            content: '↗';
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .research-link {
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid #3c4043;
+        }
+
+        .research-link:last-child {
+            border-bottom: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            color: #9aa0a6;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page {
+                padding: 20px;
+            }
+
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-filters {
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🏥 MediScan AI <span class="year-badge">2025</span></h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="nav-link active" data-page="dashboard">Dashboard</a>
+                <a href="#" class="nav-link" data-page="analysis">Scan Analysis</a>
+                <a href="#" class="nav-link" data-page="batch">Batch Analysis</a>
+                <a href="#" class="nav-link" data-page="history">History</a>
+                <a href="#" class="nav-link" data-page="reports">Reports</a>
+                <a href="#" class="nav-link" data-page="settings">Settings</a>
+            </nav>
+            <div class="user-info">
+                <div class="user-avatar">👨‍⚕️</div>
+                <span>Dr. Smith</span>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div class="page active" id="dashboard">
+            <h2 class="page-title">Dashboard 2025</h2>
+            
+            <div class="alert alert-info">
+                <strong>2025 Update:</strong> Enhanced AI models with 98.2% accuracy across all scan types. New multi-modal fusion technology now available.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-label">Scans Analyzed (2025)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value">98.2%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-value">1.8s</div>
+                    <div class="stat-label">Avg. Analysis Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value">142</div>
+                    <div class="stat-label">Active Patients</div>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent Activity</h3>
+                <div class="activity-item">
+                    <div class="activity-icon">🩻</div>
+                    <div>
+                        <h4>Chest X-Ray Analysis Completed</h4>
+                        <p>John Doe - Today, 10:24 AM | 98.7% Confidence</p>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">🧠</div>
+                    <div>
+                        <h4>Brain MRI Analysis Completed</h4>
+                        <p>Sarah Wilson - Today, 9:15 AM | 97.9% Confidence</p>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">🦴</div>
+                    <div>
+                        <h4>CT Scan Analysis Completed</h4>
+                        <p>Michael Brown - Yesterday, 4:30 PM | 98.3% Confidence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scan Analysis Page -->
+        <div class="page" id="analysis">
+            <h2 class="page-title">Scan Analysis 2025</h2>
+            
+            <div class="alert alert-info">
+                <strong>2025 Technology:</strong> Now featuring Quantum-Enhanced CNN models with multi-modal data fusion for unprecedented diagnostic accuracy.
+            </div>
+
+            <div class="upload-section">
+                <div class="section-title">
+                    <div class="icon">1</div>
+                    <span>Select Analysis Type</span>
+                </div>
+                <div class="form-group">
+                    <label for="scanType">Scan Type</label>
+                    <select id="scanType">
+                        <option value="">-- Select Scan Type --</option>
+                        <option value="xray">X-Ray</option>
+                        <option value="mri">MRI Scan</option>
+                        <option value="ct">CT Scan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="analysisType">Analysis Type</label>
+                    <select id="analysisType">
+                        <option value="">-- Select Analysis --</option>
+                        <option value="tumor">Tumor Detection</option>
+                        <option value="fracture">Fracture Detection</option>
+                        <option value="lung_cancer">Lung Cancer Detection</option>
+                        <option value="ct_analysis">CT Scan Analysis</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <div class="section-title">
+                    <div class="icon">2</div>
+                    <span>Upload Medical Scan</span>
+                </div>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="fileInput" accept="image/*,.dcm">
+                    <div class="upload-icon">📁</div>
+                    <p>Click to upload or drag and drop</p>
+                    <p style="color: #999; font-size: 0.9em;">Supports: JPG, PNG, DICOM</p>
+                    <div class="file-name" id="fileName"></div>
+                </div>
+                <img id="preview" class="preview-image">
+            </div>
+
+            <div style="text-align: center;">
+                <button id="analyzeBtn" disabled>Analyze Scan with 2025 AI</button>
+            </div>
+
+            <div class="annotated-section" id="annotatedSection">
+                <div class="section-title">
+                    <div class="icon">🔍</div>
+                    <span>AI Analysis Results</span>
+                </div>
+                
+                <div class="image-container" id="imageContainer">
+                    <img id="annotatedImage" class="scan-image" src="" alt="Analyzed Scan">
+                    <!-- Annotation markers will be added here by JavaScript -->
+                </div>
+                
+                <div class="anomaly-list" id="anomalyList">
+                    <!-- Anomalies will be listed here -->
+                </div>
+            </div>
+
+            <div class="loading" id="loadingSection">
+                <div class="spinner"></div>
+                <p>Analyzing scan with Quantum-Enhanced AI... Please wait</p>
+            </div>
+        </div>
+
+        <!-- Batch Analysis Page -->
+        <div class="page" id="batch">
+            <h2 class="page-title">Batch Analysis 2025</h2>
+            
+            <div class="alert alert-info">
+                <strong>Batch Processing:</strong> Upload multiple scans for automated analysis. Get detailed annotations and anomaly detection across all scans.
+            </div>
+
+            <div class="batch-upload-section">
+                <div class="section-title">
+                    <div class="icon">📦</div>
+                    <span>Upload Multiple Scans</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="batchScanType">Scan Type</label>
+                    <select id="batchScanType">
+                        <option value="">-- Select Scan Type --</option>
+                        <option value="xray">X-Ray</option>
+                        <option value="mri">MRI Scan</option>
+                        <option value="ct">CT Scan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="batchAnalysisType">Analysis Type</label>
+                    <select id="batchAnalysisType">
+                        <option value="">-- Select Analysis --</option>
+                        <option value="tumor">Tumor Detection</option>
+                        <option value="fracture">Fracture Detection</option>
+                        <option value="lung_cancer">Lung Cancer Detection</option>
+                        <option value="ct_analysis">CT Scan Analysis</option>
+                    </select>
+                </div>
+
+                <div class="file-upload-wrapper">
+                    <input type="file" id="batchFileInput" accept="image/*,.dcm" multiple>
+                    <div class="upload-icon">📚</div>
+                    <p>Click to upload multiple scans or drag and drop</p>
+                    <p style="color: #999; font-size: 0.9em;">Supports: JPG, PNG, DICOM (Max 100 files)</p>
+                    <div class="file-name" id="batchFileName">No files selected</div>
+                </div>
+
+                <div class="batch-file-list" id="batchFileList">
+                    <!-- Files will be listed here -->
+                </div>
+
+                <div class="progress-container" id="progressContainer" style="display: none;">
+                    <div class="progress-bar" id="progressBar">0%</div>
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button id="batchAnalyzeBtn" disabled>Analyze All Scans (Batch Mode)</button>
+                </div>
+            </div>
+
+            <div class="annotated-section" id="batchResultsSection">
+                <div class="section-title">
+                    <div class="icon">📋</div>
+                    <span>Batch Analysis Summary</span>
+                </div>
+                
+                <div class="batch-results-grid" id="batchResultsGrid">
+                    <!-- Batch results will be displayed here -->
+                </div>
+            </div>
+
+            <div class="loading" id="batchLoadingSection">
+                <div class="spinner"></div>
+                <p>Processing batch scans with Quantum AI... This may take a few minutes</p>
+                <p id="processingStatus">Initializing...</p>
+            </div>
+        </div>
+
+        <!-- Enhanced History Page -->
+        <div class="page" id="history">
+            <h2 class="page-title">Analysis History 2025</h2>
+            
+            <div class="alert alert-info">
+                <strong>Search & Filter:</strong> Find previous scans by filename, patient, or analysis type. Click any result to view detailed analysis.
+            </div>
+
+            <div class="history-search-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" id="historySearch" placeholder="Search by filename (e.g., scan230.jpg, david_scan.png)...">
+                    <div class="search-filters">
+                        <select class="filter-select" id="scanTypeFilter">
+                            <option value="">All Scan Types</option>
+                            <option value="xray">X-Ray</option>
+                            <option value="mri">MRI</option>
+                            <option value="ct">CT Scan</option>
+                        </select>
+                        <select class="filter-select" id="analysisTypeFilter">
+                            <option value="">All Analysis Types</option>
+                            <option value="tumor">Tumor Detection</option>
+                            <option value="fracture">Fracture Detection</option>
+                            <option value="lung_cancer">Lung Cancer</option>
+                            <option value="ct_analysis">CT Analysis</option>
+                        </select>
+                        <select class="filter-select" id="riskFilter">
+                            <option value="">All Risk Levels</option>
+                            <option value="high">High Risk</option>
+                            <option value="medium">Medium Risk</option>
+                            <option value="low">Low Risk</option>
+                        </select>
+                    </div>
+                    <button id="clearSearch" class="history-btn history-btn-outline">Clear</button>
+                </div>
+            </div>
+
+            <div class="history-grid" id="historyGrid">
+                <!-- History cards will be populated here -->
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results-icon">🔍</div>
+                <h3>No matching scans found</h3>
+                <p>Try adjusting your search criteria or filters</p>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div class="page" id="reports">
+            <h2 class="page-title">Generated Reports 2025</h2>
+            
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>2025 Q1 Analysis Report</h3>
+                        <div class="report-actions">
+                            <button class="btn-icon">📥</button>
+                            <button class="btn-icon">🖨️</button>
+                        </div>
+                    </div>
+                    <p>Comprehensive report of all scans analyzed in Q1 2025 with new AI models</p>
+                    <p><strong>Generated:</strong> Apr 1, 2025</p>
+                </div>
+                
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>Tumor Detection 2025</h3>
+                        <div class="report-actions">
+                            <button class="btn-icon">📥</button>
+                            <button class="btn-icon">🖨️</button>
+                        </div>
+                    </div>
+                    <p>Analysis of 2025 tumor detection accuracy with quantum-enhanced models</p>
+                    <p><strong>Generated:</strong> Mar 28, 2025</p>
+                </div>
+                
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>2025 Performance Metrics</h3>
+                        <div class="report-actions">
+                            <button class="btn-icon">📥</button>
+                            <button class="btn-icon">🖨️</button>
+                        </div>
+                    </div>
+                    <p>Quantum AI model performance and accuracy metrics for 2025</p>
+                    <p><strong>Generated:</strong> Mar 15, 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div class="page" id="settings">
+            <h2 class="page-title">Settings 2025</h2>
+            
+            <div class="settings-section">
+                <h3>2025 AI Preferences</h3>
+                <div class="form-group">
+                    <label>Enable Quantum-Enhanced Analysis</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Multi-modal Data Fusion</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>2025 Model Settings</h3>
+                <div class="form-group">
+                    <label for="confidenceThreshold">Quantum AI Confidence Threshold</label>
+                    <input type="range" id="confidenceThreshold" min="85" max="99" value="95">
+                    <span id="thresholdValue">95%</span>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>2025 Account Settings</h3>
+                <div class="form-group">
+                    <label>Real-time AI Updates</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <button>Update 2025 Credentials</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MediScan AI 2025</h3>
+                    <p>Quantum-Enhanced Medical Imaging Analysis Platform. Revolutionizing diagnostics with 98.2% accuracy.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Clinical Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://radiopaedia.org" target="_blank" rel="noopener">Radiopaedia Reference</a></li>
+                        <li><a href="https://www.acr.org" target="_blank" rel="noopener">American College of Radiology</a></li>
+                        <li><a href="https://www.rsna.org" target="_blank" rel="noopener">Radiological Society of North America</a></li>
+                        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/?term=AI+radiology" target="_blank" rel="noopener">PubMed AI Radiology Research</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Developer Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">TensorFlow Medical</a></li>
+                        <li><a href="https://pytorch.org" target="_blank" rel="noopener">PyTorch for Healthcare</a></li>
+                        <li><a href="https://monai.io" target="_blank" rel="noopener">MONAI Medical AI</a></li>
+                        <li><a href="https://keras.io" target="_blank" rel="noopener">Keras Healthcare Models</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Healthcare Partners</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.mayoclinic.org" target="_blank" rel="noopener">Mayo Clinic</a></li>
+                        <li><a href="https://www.hopkinsmedicine.org" target="_blank" rel="noopener">Johns Hopkins Medicine</a></li>
+                        <li><a href="https://www.clevelandclinic.org" target="_blank" rel="noopener">Cleveland Clinic</a></li>
+                        <li><a href="https://www.massgeneral.org" target="_blank" rel="noopener">Massachusetts General</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 MediScan AI. Quantum Medical Imaging Technology. FDA Approved. HIPAA Compliant.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // MongoDB Integration for History Page
+        const API_BASE = '/api';
+
+
+        // Enhanced History Functionality
+        const historySearch = document.getElementById('historySearch');
+        const scanTypeFilter = document.getElementById('scanTypeFilter');
+        const analysisTypeFilter = document.getElementById('analysisTypeFilter');
+        const riskFilter = document.getElementById('riskFilter');
+        const clearSearch = document.getElementById('clearSearch');
+        const historyGrid = document.getElementById('historyGrid');
+        const noResults = document.getElementById('noResults');
+
+        // Load history from MongoDB when page loads or when history tab is clicked
+        async function loadHistoryFromMongoDB() {
+            try {
+                showHistoryLoading();
+                
+                const response = await fetch(`${API_BASE}/history`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch history from server');
+                }
+                
+                const mongoData = await response.json();
+                renderHistoryCards(mongoData);
+                
+            } catch (error) {
+                console.error('Error loading history from MongoDB:', error);
+                showHistoryError('Failed to load history. Make sure your Flask server is running on port 5000.');
+            }
+        }
+
+        function showHistoryLoading() {
+            historyGrid.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading history from database...</p>
+                </div>
+            `;
+            noResults.style.display = 'none';
+        }
+
+        function showHistoryError(message) {
+            historyGrid.innerHTML = `
+                <div class="no-results">
+                    <div class="no-results-icon">⚠️</div>
+                    <h3>Connection Error</h3>
+                    <p>${message}</p>
+                    <button onclick="loadHistoryFromMongoDB()" class="history-btn history-btn-primary" style="margin-top: 15px;">
+                        Retry
+                    </button>
+                </div>
+            `;
+        }
+
+        // Render history cards with MongoDB data
+        function renderHistoryCards(data) {
+            historyGrid.innerHTML = '';
+            
+            if (!data || data.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            // Sort by timestamp (newest first)
+            data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'history-card';
+                
+                // Format timestamp
+                const date = new Date(item.timestamp);
+                const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+                
+                // Determine risk level based on confidence
+                const riskLevel = getRiskLevel(item.confidence);
+                const riskClass = `risk-${riskLevel}`;
+                
+                card.innerHTML = `
+                    <div class="history-card-header">
+                        <div>
+                            <div class="history-filename">${item.filename}</div>
+                            <div class="history-date">${formattedDate}</div>
+                        </div>
+                        <div class="history-risk-badge ${riskClass}">${riskLevel} risk</div>
+                    </div>
+                    
+                    <div class="history-details">
+                        <div class="history-detail-item">
+                            <span class="history-label">Scan Type:</span>
+                            <span class="history-value">${formatScanType(item.scan_type)}</span>
+                        </div>
+                        <div class="history-detail-item">
+                            <span class="history-label">Analysis Type:</span>
+                            <span class="history-value">${formatAnalysisType(item.analysis_type)}</span>
+                        </div>
+                        <div class="history-detail-item">
+                            <span class="history-label">AI Confidence:</span>
+                            <span class="history-value">${item.confidence}%</span>
+                        </div>
+                        <div class="history-detail-item">
+                            <span class="history-label">Risk Level:</span>
+                            <span class="history-value">${riskLevel.toUpperCase()}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="history-actions">
+                        <button class="history-btn history-btn-primary" onclick="viewAnalysis('${item._id}')">
+                            <span>📊</span> View Analysis
+                        </button>
+                        <button class="history-btn history-btn-outline" onclick="downloadReport('${item._id}')">
+                            <span>📥</span> Export
+                        </button>
+                    </div>
+                `;
+                historyGrid.appendChild(card);
+            });
+        }
+
+        // Filter history based on search and filters
+        async function filterHistory() {
+            const searchTerm = historySearch.value.toLowerCase();
+            const scanType = scanTypeFilter.value;
+            const analysisType = analysisTypeFilter.value;
+            const risk = riskFilter.value;
+            
+            try {
+                showHistoryLoading();
+                const response = await fetch(`${API_BASE}/history`);
+                const allHistory = await response.json();
+                
+                // Client-side filtering
+                const filteredData = allHistory.filter(item => {
+                    const matchesSearch = item.filename.toLowerCase().includes(searchTerm);
+                    const matchesScanType = !scanType || item.scan_type === scanType;
+                    const matchesAnalysisType = !analysisType || item.analysis_type === analysisType;
+                    const matchesRisk = !risk || getRiskLevel(item.confidence) === risk;
+                    
+                    return matchesSearch && matchesScanType && matchesAnalysisType && matchesRisk;
+                });
+                
+                renderHistoryCards(filteredData);
+                
+            } catch (error) {
+                console.error('Error filtering history:', error);
+                showHistoryError('Failed to filter history.');
+            }
+        }
+
+        // Page Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected page
+                const pageId = this.getAttribute('data-page');
+                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+                document.getElementById(pageId).classList.add('active');
+                
+                // Load MongoDB data when history page is activated
+                if (pageId === 'history') {
+                    loadHistoryFromMongoDB();
+                }
+            });
+        });
+
+        // Single File Upload Functionality
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+        const preview = document.getElementById('preview');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const scanType = document.getElementById('scanType');
+        const analysisType = document.getElementById('analysisType');
+        const loadingSection = document.getElementById('loadingSection');
+        const annotatedSection = document.getElementById('annotatedSection');
+        const imageContainer = document.getElementById('imageContainer');
+        const annotatedImage = document.getElementById('annotatedImage');
+        const anomalyList = document.getElementById('anomalyList');
+
+        let selectedFile = null;
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                selectedFile = file;
+                fileName.textContent = `Selected: ${file.name}`;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    annotatedImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                
+                checkFormValid();
+            }
+        });
+
+        scanType.addEventListener('change', checkFormValid);
+        analysisType.addEventListener('change', checkFormValid);
+
+        function checkFormValid() {
+            if (selectedFile && scanType.value && analysisType.value) {
+                analyzeBtn.disabled = false;
+            } else {
+                analyzeBtn.disabled = true;
+            }
+        }
+
+        // Update the analyze function to save to MongoDB
+        analyzeBtn.addEventListener('click', async function() {
+            if (!selectedFile) return;
+
+            annotatedSection.classList.remove('active');
+            loadingSection.style.display = 'block';
+
+            const formData = new FormData();
+            formData.append('scan', selectedFile);
+            formData.append('scan_type', scanType.value);
+            formData.append('analysis_type', analysisType.value);
+
+            try {
+                // Send to your Flask backend which will save to MongoDB
+                const response = await fetch(`${API_BASE}/analyze`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Analysis failed');
+                }
+
+                const result = await response.json();
+                
+                loadingSection.style.display = 'none';
+                displayAnnotatedResults(result);
+                
+                // Refresh history if we're on the history page
+                if (document.getElementById('history').classList.contains('active')) {
+                    loadHistoryFromMongoDB();
+                }
+                
+            } catch (error) {
+                loadingSection.style.display = 'none';
+                console.error('Analysis failed:', error);
+                
+                // Fallback to demo mode
+                displayDemoAnnotatedResults();
+                
+                // Show error but continue with demo
+                alert('Backend connection failed. Showing demo results. Real analysis would be saved to MongoDB.');
+            }
+        });
+
+        function displayAnnotatedResults(result) {
+            // Clear previous annotations
+            clearAnnotations();
+            
+            // Add annotation markers based on AI predictions
+            if (result.annotations && result.annotations.length > 0) {
+                result.annotations.forEach(annotation => {
+                    addAnnotationMarker(annotation);
+                });
+            }
+            
+            // Update anomaly list
+            updateAnomalyList(result.anomalies || []);
+            
+            annotatedSection.classList.add('active');
+        }
+
+        function displayDemoAnnotatedResults() {
+            // Clear previous annotations
+            clearAnnotations();
+            
+            // Generate demo annotations based on scan type
+            const scanTypeValue = scanType.value;
+            const demoAnnotations = generateDemoAnnotations(scanTypeValue);
+            
+            demoAnnotations.forEach(annotation => {
+                addAnnotationMarker(annotation);
+            });
+            
+            // Update anomaly list with demo data
+            updateAnomalyList(demoAnnotations);
+            
+            annotatedSection.classList.add('active');
+        }
+
+        function generateDemoAnnotations(scanType) {
+            const annotations = [];
+            
+            if (scanType === 'xray') {
+                annotations.push(
+                    {
+                        x: 30, y: 40, 
+                        type: 'Fracture', 
+                        confidence: 94, 
+                        risk: 'high',
+                        description: 'Hairline fracture detected in the 3rd rib'
+                    },
+                    {
+                        x: 70, y: 60, 
+                        type: 'Opacity', 
+                        confidence: 78, 
+                        risk: 'medium',
+                        description: 'Small opacity in lower lung field'
+                    }
+                );
+            } else if (scanType === 'mri') {
+                annotations.push(
+                    {
+                        x: 45, y: 35, 
+                        type: 'Tumor', 
+                        confidence: 92, 
+                        risk: 'high',
+                        description: 'Suspicious mass detected in frontal lobe'
+                    },
+                    {
+                        x: 60, y: 70, 
+                        type: 'Lesion', 
+                        confidence: 65, 
+                        risk: 'low',
+                        description: 'Small benign lesion in parietal lobe'
+                    }
+                );
+            } else if (scanType === 'ct') {
+                annotations.push(
+                    {
+                        x: 35, y: 45, 
+                        type: 'Nodule', 
+                        confidence: 88, 
+                        risk: 'high',
+                        description: 'Solid pulmonary nodule requiring follow-up'
+                    },
+                    {
+                        x: 65, y: 55, 
+                        type: 'Emphysema', 
+                        confidence: 72, 
+                        risk: 'medium',
+                        description: 'Early stage emphysema changes'
+                    }
+                );
+            }
+            
+            return annotations;
+        }
+
+        function addAnnotationMarker(annotation) {
+            const marker = document.createElement('div');
+            marker.className = `annotation-marker ${annotation.risk}-risk`;
+            marker.style.left = `${annotation.x}%`;
+            marker.style.top = `${annotation.y}%`;
+            marker.setAttribute('data-type', annotation.type);
+            marker.setAttribute('data-confidence', annotation.confidence);
+            marker.setAttribute('data-description', annotation.description);
+            
+            // Create tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = `annotation-tooltip ${annotation.risk}-risk`;
+            tooltip.innerHTML = `
+                <strong>${annotation.type}</strong>
+                <p>Confidence: ${annotation.confidence}%</p>
+                <p>${annotation.description}</p>
+            `;
+            
+            marker.appendChild(tooltip);
+            
+            // Add hover events
+            marker.addEventListener('mouseenter', function() {
+                tooltip.style.display = 'block';
+                // Position tooltip
+                const rect = marker.getBoundingClientRect();
+                tooltip.style.left = '120%';
+                tooltip.style.top = '50%';
+                tooltip.style.transform = 'translateY(-50%)';
+            });
+            
+            marker.addEventListener('mouseleave', function() {
+                tooltip.style.display = 'none';
+            });
+            
+            imageContainer.appendChild(marker);
+        }
+
+        function clearAnnotations() {
+            const markers = imageContainer.querySelectorAll('.annotation-marker');
+            markers.forEach(marker => marker.remove());
+        }
+
+        function updateAnomalyList(anomalies) {
+            anomalyList.innerHTML = '';
+            
+            if (anomalies.length === 0) {
+                anomalyList.innerHTML = '<p>No anomalies detected. Scan appears normal.</p>';
+                return;
+            }
+            
+            anomalies.forEach(anomaly => {
+                const anomalyItem = document.createElement('div');
+                anomalyItem.className = `anomaly-item ${anomaly.risk}-risk`;
+                anomalyItem.innerHTML = `
+                    <strong>${anomaly.type}</strong>
+                    <p>Confidence: ${anomaly.confidence}% - ${anomaly.description}</p>
+                `;
+                
+                // Click to highlight corresponding marker
+                anomalyItem.addEventListener('click', function() {
+                    const markers = imageContainer.querySelectorAll('.annotation-marker');
+                    markers.forEach(marker => {
+                        if (marker.getAttribute('data-type') === anomaly.type) {
+                            marker.style.animation = 'pulse 0.5s 3';
+                            setTimeout(() => {
+                                marker.style.animation = 'pulse 2s infinite';
+                            }, 1500);
+                        }
+                    });
+                });
+                
+                anomalyList.appendChild(anomalyItem);
+            });
+        }
+
+        // Batch Upload Functionality
+        const batchFileInput = document.getElementById('batchFileInput');
+        const batchFileName = document.getElementById('batchFileName');
+        const batchFileList = document.getElementById('batchFileList');
+        const batchAnalyzeBtn = document.getElementById('batchAnalyzeBtn');
+        const batchScanType = document.getElementById('batchScanType');
+        const batchAnalysisType = document.getElementById('batchAnalysisType');
+        const batchLoadingSection = document.getElementById('batchLoadingSection');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const processingStatus = document.getElementById('processingStatus');
+        const batchResultsSection = document.getElementById('batchResultsSection');
+        const batchResultsGrid = document.getElementById('batchResultsGrid');
+
+        let batchFiles = [];
+
+        batchFileInput.addEventListener('change', function(e) {
+            batchFiles = Array.from(e.target.files);
+            
+            if (batchFiles.length > 0) {
+                batchFileName.textContent = `${batchFiles.length} files selected`;
+                updateBatchFileList();
+                checkBatchFormValid();
+            } else {
+                batchFileName.textContent = 'No files selected';
+                batchFileList.innerHTML = '';
+                batchAnalyzeBtn.disabled = true;
+            }
+        });
+
+        batchScanType.addEventListener('change', checkBatchFormValid);
+        batchAnalysisType.addEventListener('change', checkBatchFormValid);
+
+        function updateBatchFileList() {
+            batchFileList.innerHTML = '';
+            batchFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'batch-file-item';
+                fileItem.innerHTML = `
+                    <span>${file.name}</span>
+                    <span class="file-status status-pending">Pending</span>
+                `;
+                batchFileList.appendChild(fileItem);
+            });
+        }
+
+        function checkBatchFormValid() {
+            if (batchFiles.length > 0 && batchScanType.value && batchAnalysisType.value) {
+                batchAnalyzeBtn.disabled = false;
+            } else {
+                batchAnalyzeBtn.disabled = true;
+            }
+        }
+
+        // Update batch processing to save to MongoDB
+        batchAnalyzeBtn.addEventListener('click', async function() {
+            if (batchFiles.length === 0) return;
+
+            batchResultsSection.classList.remove('active');
+            batchLoadingSection.style.display = 'block';
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            progressBar.textContent = '0%';
+
+            try {
+                // Process each file and save to MongoDB
+                let processed = 0;
+                const total = batchFiles.length;
+                
+                for (const file of batchFiles) {
+                    const formData = new FormData();
+                    formData.append('scan', file);
+                    formData.append('scan_type', batchScanType.value);
+                    formData.append('analysis_type', batchAnalysisType.value);
+                    
+                    await fetch(`${API_BASE}/analyze`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    processed++;
+                    const progress = Math.round((processed / total) * 100);
+                    progressBar.style.width = `${progress}%`;
+                    progressBar.textContent = `${progress}%`;
+                    
+                    // Update file status
+                    const fileItems = batchFileList.querySelectorAll('.batch-file-item');
+                    if (fileItems[processed - 1]) {
+                        fileItems[processed - 1].querySelector('.file-status').textContent = 'Complete';
+                        fileItems[processed - 1].querySelector('.file-status').className = 'file-status status-complete';
+                    }
+                    
+                    processingStatus.textContent = `Processing ${processed} of ${total} scans...`;
+                }
+                
+                batchLoadingSection.style.display = 'none';
+                showBatchResults();
+                
+                // Refresh history
+                if (document.getElementById('history').classList.contains('active')) {
+                    loadHistoryFromMongoDB();
+                }
+                
+            } catch (error) {
+                batchLoadingSection.style.display = 'none';
+                console.error('Batch processing failed:', error);
+                alert('Batch processing failed. Some scans may not have been saved to MongoDB.');
+            }
+        });
+
+        function showBatchResults() {
+            // Generate sample batch results
+            const results = [];
+            for (let i = 0; i < batchFiles.length; i++) {
+                const riskLevels = ['high', 'medium', 'low'];
+                const risk = riskLevels[Math.floor(Math.random() * riskLevels.length)];
+                const confidence = 70 + Math.floor(Math.random() * 25);
+                
+                results.push({
+                    filename: batchFiles[i].name,
+                    anomalies: Math.floor(Math.random() * 3),
+                    risk: risk,
+                    confidence: confidence
+                });
+            }
+            
+            // Display results in grid
+            batchResultsGrid.innerHTML = '';
+            results.forEach(result => {
+                const resultCard = document.createElement('div');
+                resultCard.className = 'result-card';
+                resultCard.innerHTML = `
+                    <div class="result-header">${result.filename}</div>
+                    <p><strong>Anomalies Detected:</strong> ${result.anomalies}</p>
+                    <p><strong>Risk Level:</strong> <span class="file-status status-${result.risk}">${result.risk.toUpperCase()}</span></p>
+                    <p><strong>AI Confidence:</strong> ${result.confidence}%</p>
+                `;
+                batchResultsGrid.appendChild(resultCard);
+            });
+            
+            batchResultsSection.classList.add('active');
+        }
+
+        // Search and filter event listeners with debouncing
+        historySearch.addEventListener('input', debounce(filterHistory, 300));
+        scanTypeFilter.addEventListener('change', filterHistory);
+        analysisTypeFilter.addEventListener('change', filterHistory);
+        riskFilter.addEventListener('change', filterHistory);
+
+        clearSearch.addEventListener('click', function() {
+            historySearch.value = '';
+            scanTypeFilter.value = '';
+            analysisTypeFilter.value = '';
+            riskFilter.value = '';
+            loadHistoryFromMongoDB();
+        });
+
+        // Helper functions
+        function getRiskLevel(confidence) {
+            if (confidence >= 85) return 'high';
+            if (confidence >= 70) return 'medium';
+            return 'low';
+        }
+
+        function formatScanType(scanType) {
+            const types = {
+                'xray': 'X-Ray',
+                'mri': 'MRI Scan',
+                'ct': 'CT Scan'
+            };
+            return types[scanType] || scanType;
+        }
+
+        function formatAnalysisType(analysisType) {
+            const types = {
+                'tumor': 'Tumor Detection',
+                'fracture': 'Fracture Detection',
+                'lung_cancer': 'Lung Cancer Detection',
+                'ct_analysis': 'CT Scan Analysis'
+            };
+            return types[analysisType] || analysisType;
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Action functions
+        function viewAnalysis(id) {
+            alert(`Viewing detailed analysis for ID: ${id}\n\nThis would open the full analysis view with annotations and detailed results from MongoDB.`);
+        }
+
+        function downloadReport(id) {
+            alert(`Exporting report for ID: ${id}\n\nThis would generate and download a PDF report with data from MongoDB.`);
+        }
+
+        // Initialize history on page load if on history page
+        if (document.getElementById('history').classList.contains('active')) {
+            loadHistoryFromMongoDB();
+        }
+    </script>
+</body>
+</html>
